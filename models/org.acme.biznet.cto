@@ -1,0 +1,49 @@
+/**
+ * My commodity trading network
+ */
+namespace org.acme.biznet
+
+asset Passport identified by Passportno {
+    o String Name
+    o String Email
+    o String UID
+    o String Gender
+    o String Citizen
+    o Double Age
+    o String Passportno
+    --> User owner
+}
+asset Aadhar identified by Aadharno {
+    o String Name
+    o String Contactno
+    o String UID
+    o String Aadharno
+    o Double Age
+    o String Gender
+    o String Citizen
+    --> User owner
+}
+asset Pan identified by Panno {
+    o String Name
+    o String UID
+    o String Panno
+    o Double Age
+    --> User owner
+}
+participant User identified by UID {
+    o String UID
+    o String firstName
+    o String lastName
+}
+transaction Trade_Passport {
+    --> Passport passport
+    --> User newOwner
+}
+transaction Trade_Aadhar {
+    --> Aadhar aadhar
+    --> User newOwner
+}
+transaction Trade_Pan {
+    --> Pan pan
+    --> User newOwner
+}
